@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+desktop/node_modules/
+
+# Build output
+dist/
+desktop/release/
+*.zip
+
+# Real alarm data (do not publish)
+*.xlsx
+
+# Office temp lock files
+~$*.docx
+~$*.xlsx
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.local
+.vscode/
+.idea/

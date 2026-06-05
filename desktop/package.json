@@ -1,0 +1,50 @@
+{
+    "name": "central-station-alarm-analyzer",
+    "version": "1.0.0",
+    "description": "中央站 报警数据分析 DEMO",
+    "main": "main.js",
+    "author": "Monitor Alarm Team",
+    "license": "MIT",
+    "scripts": {
+        "start": "electron .",
+        "build": "electron-builder --win"
+    },
+    "devDependencies": {
+        "electron": "^28.0.0",
+        "electron-builder": "^24.9.1"
+    },
+    "build": {
+        "appId": "com.hospital.alarm-analyzer",
+        "productName": "中央站报警数据分析",
+        "directories": {
+            "output": "release"
+        },
+        "files": [
+            "main.js",
+            "src/**/*",
+            "libs/**/*",
+            "icon.ico"
+        ],
+        "win": {
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": ["x64"]
+                }
+            ],
+            "icon": "icon.ico"
+        },
+        "nsis": {
+            "oneClick": false,
+            "perMachine": true,
+            "allowToChangeInstallationDirectory": true,
+            "installerLanguages": ["zh_CN", "en_US"],
+            "language": 2052,
+            "installerSidebar": null,
+            "shortcutName": "中央站报警数据分析",
+            "menuCategory": true,
+            "createDesktopShortcut": true,
+            "createStartMenuShortcut": true
+        }
+    }
+}

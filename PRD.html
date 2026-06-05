@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>产品需求文档 - 中央站报警数据分析系统</title>
+<style>
+  @page { margin: 20mm 18mm; size: A4; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "SimHei", "PingFang SC", sans-serif;
+    color: #1a1a2e;
+    line-height: 1.8;
+    font-size: 11pt;
+    background: #fff;
+  }
+  .cover {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    text-align: center;
+    padding: 60px 40px;
+  }
+  .cover-logo {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, #0b5ed7, #3d8bfd);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 40px;
+  }
+  .cover-logo svg { color: #fff; }
+  .cover h1 {
+    font-size: 28pt;
+    font-weight: 700;
+    color: #0b5ed7;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+  .cover h2 {
+    font-size: 14pt;
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 50px;
+  }
+  .cover-meta {
+    font-size: 11pt;
+    color: #666;
+    line-height: 2.2;
+  }
+  .cover-meta span { color: #333; font-weight: 600; }
+  .cover-line {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, #0b5ed7, #3d8bfd);
+    border-radius: 2px;
+    margin: 30px auto;
+  }
+
+  h1 { font-size: 18pt; color: #0b5ed7; margin: 30px 0 14px; border-bottom: 2px solid #e0e7f1; padding-bottom: 8px; }
+  h2 { font-size: 14pt; color: #1a1a2e; margin: 22px 0 10px; }
+  h3 { font-size: 12pt; color: #333; margin: 16px 0 8px; }
+  p { margin: 8px 0; text-align: justify; }
+  strong { color: #0b5ed7; }
+  ul, ol { margin: 8px 0 8px 24px; }
+  li { margin: 4px 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px;
+    font-size: 10.5pt;
+  }
+  th, td {
+    border: 1px solid #d0d7e2;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  th {
+    background: #f0f4fa;
+    font-weight: 600;
+    color: #1a1a2e;
+  }
+  tr:nth-child(even) td { background: #fafbfd; }
+
+  .highlight-box {
+    background: #f0f6ff;
+    border-left: 4px solid #0b5ed7;
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 10.5pt;
+    color: #333;
+  }
+
+  .section { page-break-inside: avoid; }
+  .page-break { page-break-before: always; }
+
+  .footer {
+    margin-top: 60px;
+    padding-top: 16px;
+    border-top: 1px solid #e0e7f1;
+    font-size: 9pt;
+    color: #999;
+    text-align: center;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 9pt;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .badge-red { background: #fef2f2; color: #ef4444; border: 1px solid #fecaca; }
+  .badge-orange { background: #fff7ed; color: #f97316; border: 1px solid #fed7aa; }
+  .badge-blue { background: #eff6ff; color: #3b82f6; border: 1px solid #bfdbfe; }
+  .badge-green { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+  .badge-gray { background: #f9fafb; color: #6b7280; border: 1px solid #e5e7eb; }
+</style>
+</head>
+<body>
+
+<!-- ==================== 封面 ==================== -->
+<div class="cover">
+  <div class="cover-logo">
+    <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="2">
+      <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+    </svg>
+  </div>
+  <h1>中央站报警数据分析系统</h1>
+  <h2>产品需求文档（PRD）</h2>
+  <div class="cover-line"></div>
+  <div class="cover-meta">
+    <p>版本：<span>V1.0.0</span></p>
+    <p>日期：<span>2026 年 4 月 26 日</span></p>
+    <p>状态：<span>已发布</span></p>
+    <p>平台：<span>Web / Windows 桌面端</span></p>
+  </div>
+</div>
+
+<!-- ==================== 目录 ==================== -->
+<h1>目录</h1>
+<ol style="font-size: 11.5pt; line-height: 2.4;">
+  <li>产品背景</li>
+  <li>目标用户</li>
+  <li>核心功能模块
+    <ol style="margin-left: 20px; line-height: 2;">
+      <li>数据导入</li>
+      <li>报警数据总览</li>
+      <li>报警时序分析</li>
+      <li>心律失常报警专项分析</li>
+      <li>压力相关报警专项分析</li>
+    </ol>
+  </li>
+  <li>报警分类引擎</li>
+  <li>技术架构</li>
+  <li>交付物</li>
+  <li>未来迭代方向</li>
+</ol>
+
+<!-- ==================== 正文 ==================== -->
+<div class="page-break"></div>
+
+<h1>一、产品背景</h1>
+<p>ICU/CCU 等重症监护病房普遍使用飞利浦 PIIC iX 中央监护系统，该系统会产生海量的报警审计日志（单次导出可达 <strong>50 万条</strong>记录）。目前这些数据以 <code>.xlsx</code> 文件导出后，<strong>缺乏有效的可视化分析手段</strong>，临床工程师和护理管理者难以从中提炼出有价值的报警管理洞察。</p>
+
+<div class="highlight-box">
+  <strong>核心问题：报警疲劳（Alarm Fatigue）</strong><br>
+  报警疲劳是全球公认的患者安全问题——过多无效报警导致临床人员对报警脱敏，可能延误真正的危急事件响应。本产品的核心目标是通过数据分析，帮助科室<strong>识别报警模式、定位高频无效报警、优化报警阈值配置</strong>。
+</div>
+
+<h1>二、目标用户</h1>
+<table>
+  <tr><th style="width:25%">角色</th><th>使用场景</th></tr>
+  <tr><td>临床工程师</td><td>分析设备报警配置合理性，优化阈值设置</td></tr>
+  <tr><td>护士长 / 护理主管</td><td>了解各床位报警负担，评估报警管理效果</td></tr>
+  <tr><td>医疗质量管理部门</td><td>报警疲劳风险评估，生成质控报告数据</td></tr>
+  <tr><td>设备科管理人员</td><td>设备使用状况分析，维护决策参考</td></tr>
+</table>
+
+<h1>三、核心功能模块</h1>
+
+<h2>3.1 数据导入</h2>
+<ul>
+  <li>支持飞利浦 PIIC iX 系统导出的审计数据 <code>.xlsx</code> 文件</li>
+  <li>自动识别列结构（日期、床位标名、操作、装置名称、临床用户）</li>
+  <li>智能过滤：仅统计"已生成于"事件（报警触发），避免与"已结束"事件重复计数</li>
+  <li>未来扩展：兼容其他品牌监护系统的数据格式</li>
+</ul>
+
+<h2>3.2 报警数据总览</h2>
+<ul>
+  <li><strong>关键指标卡片</strong>：报警触发总数、活跃床位数、日均报警数、最频繁报警类型</li>
+  <li><strong>报警类别分布饼图</strong>：心律失常 / 压力 / 呼吸 / 血氧 / 心率 / ST段 / 体温 / 技术报警</li>
+  <li><strong>各床位报警数量柱状图</strong>：直观对比床位间报警负担差异</li>
+  <li><strong>Top 15 高频报警类型</strong>：定位最需要优化的报警项</li>
+  <li><strong>严重等级分布</strong>：<span class="badge badge-red">危急(***)</span> <span class="badge badge-orange">严重(**)</span> <span class="badge badge-blue">警告(*)</span> <span class="badge badge-gray">提示</span> — 评估报警分级合理性</li>
+</ul>
+
+<h2>3.3 报警时序分析</h2>
+<ul>
+  <li><strong>每日报警趋势折线图</strong>：识别报警量异常波动和长期趋势</li>
+  <li><strong>24 小时分布</strong>：发现报警高峰时段（如交接班时段、夜间值班）</li>
+  <li><strong>每周分布</strong>：对比工作日与周末差异</li>
+  <li><strong>各类别堆叠趋势图</strong>：观察不同类型报警的时间演变</li>
+</ul>
+
+<h2>3.4 心律失常报警专项分析</h2>
+<ul>
+  <li>专项统计：房颤、PVC、室速、室颤、漏搏、不规则心率等</li>
+  <li>按床位、严重等级、时间趋势的多维交叉分析</li>
+  <li>占全部报警比例计算，评估心律失常报警负担</li>
+</ul>
+
+<h2>3.5 压力相关报警专项分析</h2>
+<ul>
+  <li>专项统计：ABPs（有创动脉血压）、NBPs（无创血压）、CVPm（中心静脉压）、PAPd（肺动脉压）</li>
+  <li>按床位、严重等级、时间趋势的多维分析</li>
+  <li>辅助判断血压阈值设置是否合理</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h1>四、报警分类引擎</h1>
+<p>系统内置基于关键词的自动分类引擎，覆盖飞利浦中央站全部报警类型：</p>
+<table>
+  <tr><th style="width:18%">分类</th><th>识别关键词</th></tr>
+  <tr><td><span class="badge badge-red">心律失常</span></td><td>房颤、PVC、VT、室颤、漏搏、心跳骤停、心搏停止、室性二联律、室性三联律、室性节律、室早连发、成对PVC、多形PVC、R-on-T、极过速、起搏器未捕获、非持续性VT</td></tr>
+  <tr><td><span class="badge badge-orange">压力相关</span></td><td>ABPs（有创动脉血压）、NBPs（无创血压）、CVPm（中心静脉压）、PAPd（肺动脉压）</td></tr>
+  <tr><td><span class="badge badge-blue">呼吸</span></td><td>RR、呼吸停</td></tr>
+  <tr><td><span class="badge badge-blue">血氧</span></td><td>SpO₂、低氧</td></tr>
+  <tr><td><span class="badge badge-orange">心率</span></td><td>HR</td></tr>
+  <tr><td style="color:#8b5cf6;font-weight:600">ST段</td><td>ST-III、ST-MCL、ST-V、ST多导联、STE</td></tr>
+  <tr><td style="color:#ec4899;font-weight:600">体温</td><td>血温</td></tr>
+  <tr><td><span class="badge badge-gray">技术报警</span></td><td>导联脱落、ABP断开、INOP</td></tr>
+</table>
+
+<p><strong>严重等级解析</strong>（按飞利浦标准）：</p>
+<table>
+  <tr><th style="width:20%">前缀</th><th style="width:20%">等级</th><th>含义</th></tr>
+  <tr><td><code>***</code></td><td><span class="badge badge-red">危急</span></td><td>需立即干预的生命危险事件（如室颤、心搏停止）</td></tr>
+  <tr><td><code>**</code></td><td><span class="badge badge-orange">严重</span></td><td>需尽快处理的异常参数（如血压严重超限）</td></tr>
+  <tr><td><code>*</code></td><td><span class="badge badge-blue">警告</span></td><td>需关注的参数异常（如PVC频率升高）</td></tr>
+  <tr><td>无前缀</td><td><span class="badge badge-gray">提示</span></td><td>操作记录、设置变更等信息性事件</td></tr>
+</table>
+
+<h1>五、技术架构</h1>
+
+<table>
+  <tr><th style="width:15%">层面</th><th style="width:30%">方案</th><th>理由</th></tr>
+  <tr><td>前端</td><td>纯 HTML + CSS + JavaScript</td><td>零依赖部署，无需构建工具</td></tr>
+  <tr><td>数据解析</td><td>SheetJS (xlsx)</td><td>浏览器端解析 Excel，数据不离开本地</td></tr>
+  <tr><td>图表引擎</td><td>ECharts 5.x</td><td>高性能大数据量渲染，交互丰富</td></tr>
+  <tr><td>Web 部署</td><td>Azure Static Web Apps</td><td>全球 CDN、免费 HTTPS、零运维</td></tr>
+  <tr><td>桌面部署</td><td>Electron + NSIS 安装包</td><td>离线使用，适合院内网络隔离环境</td></tr>
+</table>
+
+<div class="highlight-box">
+  <strong>隐私设计</strong>：所有数据处理在浏览器/客户端本地完成，<strong>无任何数据上传到服务器</strong>，符合医疗数据安全要求。患者信息和报警数据始终留在用户设备上。
+</div>
+
+<h1>六、交付物</h1>
+<table>
+  <tr><th style="width:25%">交付物</th><th>说明</th></tr>
+  <tr><td><span class="badge badge-green">Web 版</span></td><td><code>https://brave-sea-09a76db00.7.azurestaticapps.net</code><br>全球可访问，免安装，浏览器打开即用</td></tr>
+  <tr><td><span class="badge badge-blue">Windows 安装包</span></td><td><code>中央站报警数据分析 Setup 1.0.0.exe</code>（约 80 MB）<br>完全离线运行，可拷贝分发给同事</td></tr>
+</table>
+
+<div class="page-break"></div>
+
+<h1>七、未来迭代方向</h1>
+<table>
+  <tr><th style="width:8%">优先级</th><th style="width:28%">功能</th><th>说明</th></tr>
+  <tr><td>P1</td><td>多文件合并分析</td><td>支持上传多个时间段的数据文件进行合并分析，覆盖更长周期</td></tr>
+  <tr><td>P1</td><td>报警疲劳指数</td><td>基于国际标准计算每床位/每小时报警密度，量化评估报警疲劳风险</td></tr>
+  <tr><td>P1</td><td>报告导出（PDF/Word）</td><td>一键生成可打印的分析报告，可直接用于质控会议</td></tr>
+  <tr><td>P2</td><td>阈值建议引擎</td><td>基于历史数据，智能推荐报警阈值优化方案</td></tr>
+  <tr><td>P2</td><td>多品牌兼容</td><td>支持 GE、迈瑞、Dräger 等其他品牌监护系统数据格式</td></tr>
+  <tr><td>P2</td><td>科室对标分析</td><td>多科室报警数据横向对比，发现最佳实践</td></tr>
+  <tr><td>P3</td><td>报警响应时间分析</td><td>基于"已生成于"和"确认静音/已结束"的时间差，分析临床响应速度</td></tr>
+  <tr><td>P3</td><td>趋势预警</td><td>自动检测报警量异常增长趋势，提前预警</td></tr>
+</table>
+
+<div class="footer">
+  <p>中央站报警数据分析系统 &mdash; 产品需求文档 V1.0.0 &mdash; 2026 年 4 月</p>
+  <p style="color:#bbb;">Central Station Alarm Data Analysis &mdash; Product Requirements Document</p>
+</div>
+
+</body>
+</html>
