@@ -1,0 +1,27 @@
+NOTICE — Demonstration Use Only
+================================
+
+This repository is a demonstration ("DEMO") project, provided solely for
+evaluation, educational, and illustration purposes.
+
+- It is NOT intended for production, clinical, or diagnostic use.
+- Nothing in this repository constitutes medical, diagnostic, or professional
+  advice.
+- Any data, results, patients, or scenarios shown are simulated or
+  illustrative only and do not represent real individuals or real outcomes.
+
+The software is licensed under the MIT License (see the LICENSE file). This
+NOTICE does not modify the MIT License terms; it only clarifies the intended
+scope of use.
+
+仅供演示使用
+============
+
+本仓库为演示（DEMO）项目，仅用于评估、教育与展示目的：
+
+- 不用于生产环境、临床或诊断用途；
+- 其中内容不构成任何医疗、诊断或专业建议；
+- 所展示的任何数据、结果、患者或场景均为模拟或示意，不代表真实个人或真实结论。
+
+本软件以 MIT 许可证授权（见 LICENSE 文件）。本声明不修改 MIT 许可证条款，
+仅用于澄清预期使用范围。
